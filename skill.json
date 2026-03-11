@@ -30,18 +30,23 @@
       "isAvailableWorldwide": true,
       "locales": {
         "pt-BR": {
-          "description": "Sample Full Description",
+          "description": "Skill para registrar medições de pressão arterial e receber resumos periódicos por e-mail. Diga à Alexa os valores sistólico e diastólico para gravar cada medição. Solicite um resumo dos últimos N dias e ele será enviado formatado para o seu e-mail cadastrado.",
           "examplePhrases": [
-            "Alexa abra olá mundo",
-            "olá",
-            "ajuda"
+            "Alexa, abra pressão arterial",
+            "anote minha pressão arterial 120 por 80",
+            "me envie o resumo da pressão dos últimos sete dias"
           ],
-          "keywords": [],
-          "name": "Anotar pressão arterial",
-          "summary": "Sample Short Description"
+          "keywords": [
+            "pressão arterial",
+            "saúde",
+            "hipertensão",
+            "monitoramento"
+          ],
+          "name": "Pressão Arterial",
+          "summary": "Registre sua pressão arterial e receba resumos por e-mail."
         }
       },
-      "testingInstructions": "Sample Testing Instructions."
+      "testingInstructions": "Abra a skill dizendo 'Alexa, abra pressão arterial'. Diga 'anote minha pressão arterial 120 por 80' para registrar uma medição. Diga 'me envie o resumo da pressão dos últimos 7 dias' para receber o resumo por e-mail."
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "Anotar pressão",
+      "invocationName": "pressão arterial",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -16,25 +16,131 @@
           "samples": []
         },
         {
-          "name": "HelloWorldIntent",
-          "slots": [],
-          "samples": [
-            "olá",
-            "como vai você",
-            "diga oi mundo",
-            "diga oi",
-            "oi",
-            "diga olá mundo",
-            "diga olá"
-          ]
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
         },
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
+        },
+        {
+          "name": "RegistrarPressaoIntent",
+          "slots": [
+            {
+              "name": "sistolica",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "diastolica",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "anote minha pressão arterial {sistolica} por {diastolica}",
+            "registre minha pressão {sistolica} por {diastolica}",
+            "minha pressão é {sistolica} por {diastolica}",
+            "pressão {sistolica} por {diastolica}",
+            "anote minha pressão arterial",
+            "registre minha pressão arterial",
+            "anotar pressão",
+            "quero registrar minha pressão"
+          ]
+        },
+        {
+          "name": "EnviarResumoPressaoIntent",
+          "slots": [
+            {
+              "name": "dias",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "me envie o resumo da pressão dos últimos {dias} dias",
+            "envie o resumo dos últimos {dias} dias",
+            "me mande o resumo dos últimos {dias} dias",
+            "quero o resumo dos últimos {dias} dias",
+            "envie resumo da pressão",
+            "me envie o resumo da pressão"
+          ]
         }
       ],
       "types": []
-    }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "RegistrarPressaoIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "sistolica",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.RegistrarPressaoIntent.sistolica"
+              }
+            },
+            {
+              "name": "diastolica",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.RegistrarPressaoIntent.diastolica"
+              }
+            }
+          ]
+        },
+        {
+          "name": "EnviarResumoPressaoIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "dias",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.EnviarResumoPressaoIntent.dias"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "SKILL_RESPONSE"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.RegistrarPressaoIntent.sistolica",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Qual é o valor da sua pressão sistólica, o número maior?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.RegistrarPressaoIntent.diastolica",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Qual é o valor da sua pressão diastólica, o número menor?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.EnviarResumoPressaoIntent.dias",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "De quantos dias você quer o resumo da pressão?"
+          }
+        ]
+      }
+    ]
   },
   "version": "1"
 }
